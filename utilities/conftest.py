@@ -25,5 +25,5 @@ def setup_post():
 def setup_put():
     requests_utility = RequestsUtility()
     validations = Validations()
-    put_task = requests_utility.put_call(BASE_URL+TASK_ID, UPDATE_TASK_PUT)
+    put_task = requests_utility.put_call(BASE_URL + TASK_ID, UPDATE_TASK_PUT)
     yield requests_utility, validations, put_task

@@ -9,33 +9,26 @@ from utilities.constants import AUTHORIZATION
 
 class RequestsUtility:
 
-    # GET status code
+    # function to get status code
     def get_status_code(self, resp) -> int:
         return resp.status_code
 
-    # Get headers
-    def get_headers(self, resp) -> CaseInsensitiveDict[str]:
-        return resp.headers
-
-    def get_cookies(self, resp) -> RequestsCookieJar:
-        return resp.cookies
-
-    # Get content type
+    # function to get content type
     def get_content_type(self, resp) -> str:
         return resp.headers['Content-Type']
 
-    # Create GET request + Base URL as JSON
+    # function to get response as JSON
     def get_response_as_json(self, resp) -> json:
         return resp.json()
 
-    # Create GET request + Base URL
+    # function to make get request
     def get_response(self, base_url: str = "", prefix: str = "", params: str = "") -> requests:
         return requests.get(base_url + prefix, params=params, auth=AUTHORIZATION)
 
-    # Create POST request
+    # function to make post request
     def post_call(self, base_url: str = "", obj: str = "", cookies: str = "") -> requests:
         return requests.post(base_url, json=obj, cookies=cookies, auth=AUTHORIZATION)
 
-    # Create PUT call
-    def put_call(self, base_url: str = "", prefix: str = "", update_obj: str = "") -> json:
+    # function to make put request
+    def put_call(self, base_url: str = "", prefix: str = "", update_obj: str = "") -> requests:
         return requests.put(base_url + prefix, json=update_obj, auth=AUTHORIZATION)
